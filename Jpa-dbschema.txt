@@ -1,0 +1,6 @@
+1. "org.springframework.dao.InvalidDataAccessResourceUsageException: error performing isolated work [Table 'in28minutes.post_seq' doesn't exist] 
+Ans : 
+    this error occurs when you create you schema manually and try to insert data with out providing primary key. because as you are using jpa it will look for hibernate sequence
+    as you added @ GeneratedValue annotation on entity class still hibernate did not know how to generate sequence .
+
+    to solve it . provide stretegy type in @GenratedValue annotation like @GeneratedValue(strategy = GenerationType.IDENTITY)
